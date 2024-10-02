@@ -1,11 +1,8 @@
 +++
 title = "Home!"
-# template = "about/section.html"
 page_template = "base.html"
-# render = true
-# redirect_to = "blog"
 +++
 
-# This is a test - welcome!!
+# Hi there :)
 
-Hi there
+Welcome to my website. Here you can find [My blog](blog) and Portfolio.

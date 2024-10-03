@@ -9,5 +9,5 @@ I plan on using Github features like Issues for getting feedback (future blog po
 free to start using them! (Although perhaps not worth it until I actually launch the website?)
 
 # License
-The blog posts and textual content are licensed under CC BY-NC-SA 4.0. The code including templates is under the MIT
-license.
+The blog posts and textual content are licensed under [CC BY-NC-SA 4.0](LICENSE-CC%20BY-NC-SA%204.0). The code 
+including templates is under the [MIT](LICENSE-MIT) license.

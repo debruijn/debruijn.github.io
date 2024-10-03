@@ -8,7 +8,11 @@ page_template = "blog-page.html"
 // Projects
 // - cs-rankings and cs-combined-rankings
 // - nl-maps
-// - intervalues
+// - intervalues & intervalues_rust
 // - various personal projects
 
 // Papers
+
+// Languages?
+
+// Detailed interactive resume?

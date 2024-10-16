@@ -1,14 +1,12 @@
 +++
-title = "Rust in Python: learnings so far"
+title = "Rust in Python: publish a Python package"
 date = 2024-10-02
 
 [taxonomies]
 tags = ["Blog", "Rust", "Python"]
 +++
 
-Rust in Python: learnings so far:
-- Not a big effort
-- Speed increases can be big
-- Type of Python functions that would benefit most
-- Variable transfer overhead
-- Personal plan of approach
+Publishing a Python package with Rust in it
+- Setup tomls and project structure and setuptools-rust
+- Got stuck on version file
+- To publish on PyPI, need to build with older GCC compiler to produce manylinux wheels

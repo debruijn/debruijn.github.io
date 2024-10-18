@@ -5,7 +5,7 @@ base_url = "https://example.com"  # TODO
 theme = "tale-zola"
 
 # The basic information about the site
-title = "Personal website of Bert de Bruijn"
+title = "Machine doing and human learning"
 description = "This is the personal website of Bert de Bruijn, including a blog and more."
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -97,7 +97,7 @@ url = "about"
 [extra.footer]
 start_year = "2024"  # start year of the site
 end_year = "2024"   # end year of the site  # TODO find out if we can make this curr_year automagically
-info = "Made with <a href=\"https://www.getzola.org\">Zola</a> with <a href=\"https://github.com/aaranxu/tale-zola\">Tala-Zola</a> theme."
+info = "Made with <a href=\"https://www.getzola.org\">Zola</a> with <a href=\"https://github.com/aaranxu/tale-zola\">Tale-Zola</a> theme."
 
 
 # The options below are used to refer to the expressions on the pages, and you

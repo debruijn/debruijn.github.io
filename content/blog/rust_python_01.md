@@ -1,5 +1,5 @@
 +++
-title = "Rust in Python: how to get started"
+title = "Rust in Python part 1: getting started"
 date = 2024-10-19
 
 [taxonomies]
@@ -92,28 +92,117 @@ Result in Python after 19.07 seconds is: 102334155.
 Let's see what this looks like in Rust!
 
 ### Rust implementation
+# TODO
+Think about Rust project initialization here?
+
 The analogue function definition in Rust could be written like:
 ```rust
 pub fn fibo(n: usize) -> usize {
-    match n {
-        1 => 1,
-        2 => 1,
-        _ => fibo(n - 2) + fibo(n - 1)
+    if n == 1 || n == 2 {
+        1
+    } else {
+        fibo(n - 2) + fibo(n - 1)
     }
 }
 ```
+Note that if you got further than chapter 4 in the Book of Rust, you will have been introduced to the `match` syntax
+which is an alternative and possibly more "rustonic"; but this version works as well and contains no Rust syntax
+that is not introduced in the first 4 chapters.
 
-Rust in Python: how to get started
-- Install (and learn) Rust
-  - Install: link to page, describe experiences - if any
-  - Learn Rust: link to the book and Rustlings, describe experiences and personal order of doing this
-- Example Python project
-  - Take an average: my_average
-- Same code in Rust
-  - Take an average: my_average
-  - Extra bits and pieces to make it usable in Python
-- Commands to compile
-  - Maturin etc
-- Adjustments in Python code and comparison of results and runtime
-  - Using simple time statement
-- Links to other basic examples
+To run the above as pure Rust code, you could put the above in a single `main.rs`. The result could be like what
+follows, which also includes `Instant` to create a simple timer:
+```rust
+use std::time::Instant;
+
+pub fn fibo(n: usize) -> usize {
+    if n == 1 || n == 2 {
+        1
+    } else {
+        fibo(n - 2) + fibo(n - 1)
+    }
+}
+
+fn main() {
+    let before = Instant::now();
+    let res = fibo(40);
+    let after = Instant::now();
+    println!("Result in Rust after {:?} is: {}.", after - before, res)
+    }
+```
+On my PC this prints:
+```
+Result in Rust after 650.475884ms is: 102334155.
+```
+Two important observations:
+1. Happy to see the answer is the same! Otherwise we'd have a problem..
+2. Also, happy to see that Rust is much faster! Otherwise, we'd be doing this for naught.
+
+### Rust adjustments for use in Python
+To convert the above to something that can be used in Python, some things have to be changed:
+- Move the `fibo` function above to `lib.rs`
+- In `main.rs`, add `use rust_in_python::fibo;` to the top
+- In `lib.rs`, adjust `fibo` to be a pyfunction (see below)
+- Also add `fiborust` as a pymodule (also see below)
+- Update the `Cargo.toml` to make use of pyo3 (see even further below)
+
+The resulting `lib.rs` becomes:
+```rust
+use pyo3::prelude::*;
+
+#[pyfunction]
+pub fn fibo(n: usize) -> usize {
+    if n == 1 || n == 2 {
+        1
+    } else {
+        fibo(n - 2) + fibo(n - 1)
+    }
+}
+
+#[pymodule]
+pub fn fiborust(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(fibo, m)?)?;
+    Ok(())
+}
+```
+In this, the name `fiborust` is just to make the distinction clear in Python between what you are importing, so the name
+is not important. What is important to note:
+- we are importing from `pyo3` on top, which is the package Maturin uses behind the scenes for the Rust-Python
+integration
+- each function you want to use in Python needs to be flagged with `#[pyfunction]`. This will (among other things) make
+sure the Rust compiler will check whether this Rust variable can be converted to a Python variable (which is fine for
+builtin variable types like `usize`)
+- each function you want to use in Python also needs to be included in the `#[pymodule]` section using the 
+`add_function` call. The other syntax used in the `fiborust` definition is outside the scope of this blog. 
+
+The updated `Cargo.toml` will have to contain the following lines:
+```toml
+[lib]
+name = "rust_in_python"
+crate-type = ["cdylib", "lib"]
+
+[dependencies.pyo3]
+version = "0.21.1"
+features = ["abi3-py310"]
+```
+This specifies:
+- the name the library will have in Python (as a module)
+- the library-type, which next to normal `lib` now also needs to be `cdylib` (you can also leave out `lib` but then
+the result is no longer runnable in Rust by itself)
+- the version of pyo3 to use
+- which Python ABI to use as a lowerbound - I have selected Python 3.10 here but other values can be used as well
+(up from py38 for Python 3.8 as the lowest)
+
+### Compiling the Rust package for Python use
+Next, we will finally be using Maturin for actually making the Rust function available to be called in Python.
+
+### Adjustments in Python code
+
+
+
+## Links to other examples
+In case you'd like to view some other simple Maturin examples, have a look at these links:
+- laksjdf
+- laksjd
+
+Otherwise, join me in [the next part](../rust-python-02) for a bigger example applied to a puzzle from the yearly 
+Advent of Code challenge

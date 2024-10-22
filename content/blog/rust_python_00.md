@@ -1,5 +1,5 @@
 +++
-title = "Rust in Python: why? And how?"
+title = "Rust in Python part 0: why and how?"
 date = 2024-10-18
 
 [taxonomies]

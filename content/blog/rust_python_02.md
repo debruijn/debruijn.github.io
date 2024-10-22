@@ -1,6 +1,6 @@
 +++
-title = "Rust in Python: more detailed example"
-date = 2024-10-02
+title = "Rust in Python part 2: more detailed example"
+date = 2024-10-22
 
 [taxonomies]
 tags = ["Blog", "Rust", "Python"]

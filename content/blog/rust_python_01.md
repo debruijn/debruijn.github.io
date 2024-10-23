@@ -16,7 +16,9 @@ basics of Python (defining a function, importing a package, etc). To add on that
 - Comparison of run time
 - Further discussion, links and references
 
-So let's dive in!
+The goal of this is to present a single solution that you can just copy to get started. Later on I will introduce some
+choices and alternatives that you might consider, but I want you to get to the power Rust from Python as fast as
+possible. So let's dive in!
 
 ## Getting started with Rust
 If you are 100% new to Rust (like I was a couple of weeks ago), there are two things you need to do to get started up

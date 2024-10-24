@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://debruijn.github.io/personal-website"  # TODO: get a better url at some point
+base_url = "https://debruijn.github.io/personal_website"  # TODO: get a better url at some point
 
 # Use the Tale-Zola theme
 theme = "tale-zola"

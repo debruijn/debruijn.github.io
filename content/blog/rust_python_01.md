@@ -27,7 +27,7 @@ follow "The Book" of Rust [here](https://doc.rust-lang.org/book/title-page.html)
 
 To install Rust, follow instructions on [section 1.1](https://doc.rust-lang.org/book/ch01-01-installation.html) of the
 book. In case you are using Linux like I do, that amounts to running:
-```commandline
+```
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 This downloads a shell script that installs the `rustup` tool which is used to maintain versions of Rust. More details
@@ -35,7 +35,7 @@ can be found on the linked page.
 
 The next step is to "just learn Rust". But don't feel that this is too big of a hurdle! As mentioned on the introduction
 page, you don't need to know all concepts of the Rust language to get to a stage where you can already replace a
-specific Python function with Rust calculations - often the ones where this matter the most can be written using the
+specific Python function with Rust calculations - often the ones for which this matter the most can be written using the
 most basic components of the language. More complicated stuff will only be relevant when more of your codebase will be
 written in Rust, which will come later together with learning those details later.
 

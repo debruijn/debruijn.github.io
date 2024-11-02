@@ -104,21 +104,162 @@ good speedup, but that it is also worthwhile to maintain the pure Rust version o
 speed is absolutely critical. Having it confirmed that all these efforts are worth it, now we move on to the next step:
 including the Rust code in my published PyPI package as well.
 
+## Building a Python package with Rust code
+In order to build `intervalues` with the Rust code in it as well in the way I did it, there were a few things I had 
+to do:
+- Update my `pyproject.toml` to include `setuptools-rust`
+- Add a rust folder to my Python repo with a Rust-to-Python wrapper in it
+- Add a MANIFEST.in to make the build process aware of the above files
 
+Let's go over them one by one!
 
-- Publishing the Python package
-  - How to change your tomls, project structure, and using setuptools-rust
-  - Warning: stuck on version file
-  - First version: not PyPI compatible due to manylinux restriction
-  - Use dedicated docker image for that with older GCC compiler to produce manylinux wheels
-  - Now: limited to Linux only?
-- Alternative setups to consider:
-  - Directly publishing with maturin publish and keep as a separate package (dependency of core intervalues)
-  - Provide an install without Rust as well, for Windows and older Python
-  - Don't use the intervalues-pyrust layer -> related to point 1?
-  - Let me know if you have other suggestions or experiences
-- Next, and for now final, section: learnings across this entire endeavour
-- Links:
-  - Other interval packages in Python
-  - My repo's and packages on intervals
-  - Setuptools-rust docs
+### Updating pyproject.toml
+To adjust the build process to make use of the Rust packages as well, we need to update the file that is the input to
+the build process: `pyproject.toml` (of an alternative to that if you use it). In this toml, we need to update the
+`build-system` section:
+```toml
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-rust"]
+build-backend = "setuptools.build_meta"
+```
+Also, we need to add a new section specifically for `setuptools-rust`:
+```toml
+[[tool.setuptools-rust.ext-modules]]
+# Private Rust extension module to be nested into the Python package
+target = "intervalues_pyrust"   # Name of the package/module as defined in Cargo.toml
+path = "rust/Cargo.toml"        # The location of the Cargo.toml
+binding = "PyO3"                # Default value, can be omitted
+```
+You can see here already a peak of the name and location of the rust files in the next subsection. Next to this, you
+can specify which binding to use, which is here defined as the default `PyO3` (which is that same technology as what
+maturin uses).
+
+Finally, an issue I encountered was that I specified my version in a `version.py`. For my setup, this will not work, 
+since the python modules can't be imported before the rust-wrapper has been made available to Python. If you are in the
+same situation, you have two basic choices: overhaul your code to delay the import of the rust wrapper, or instead put
+your version information in a non-Python file. I have chosen the latter using the good old `VERSION` setup:
+```toml
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+```
+
+### Add a rust folder with the wrapper functionality
+I created a very simple `rust` folder in the root of my Python repository containing (in essence) not much more than
+a `Cargo.toml` and a `src/lib.rs` file with all its functionality. In the `lib.rs` file the two `combine_intervals`
+functions for int and float input are defined, which both call the same `combine_intervals` from the actual Rust 
+`intervalues` package but with different before steps (the ints are `isize`, whereas the floats are converted to
+`IntFloat`).
+
+This is confirmed by the associated `Cargo.toml` as well, which is setup using the same changes as needed for a Maturin
+build: the `dependencies.pyo3` section with the specified ABI, the `crate_type` being set to `cdylib`, and the
+`opt-level` set to 3. Next to that, it has dependencies set to the main `intervalues` and `intfloat` since it uses
+them both (and also `itertools`). The name is specified as `intervalues_pyrust` in both the package and lib section
+of the toml. 
+
+Note that these two files are all that is technically needed (plus the automatically generated `Cargo.lock`), but I also
+included a LICENSE and README.md file for publishing this `intervalues_pyrust` to crates.io as well, and a separate
+`pyproject.toml` with all the Maturin-specific definitions in case I want to try out something quickly without fully
+building the Python wheel.
+
+Why all of this work for this separate wrapper with a new name? A couple of reasons:
+- I wanted to split the Rust and Python work as much as possible in separate repositories.
+- I also wanted to split the functionality of the pure Rust version and the wrapper, such that I can individually
+maintain and update those
+- With the default `intervalues` name for the rust package, there was some potential for conflict with the folder with
+my Python code having the same name (and during the Maturin test phase, this really was an issue). Of course, I can also
+just rename that folder without impacting the name of the package, but I prefer not to overhaul the Python part due to 
+some non-Python reason.
+
+I didn't have to publish this `intervalues_pyrust` on crates.io as well, but I felt like doing that anyway, at the very
+least to claim that name.
+
+### Add a MANIFEST.in file
+Finally, the shortest addition is a MANIFEST.in file at the project root. This file will make sure the build process
+can find and use the files in the rust folder. It is in my case defined as:
+```text
+include rust/Cargo.toml
+recursive-include rust/ *.rs
+```
+
+The result of all this is a buildable Python wheel that contains the Rust code. Before uploading to PyPI I did the basic
+checks: can I install it locally on my system? Can I install it in a Docker image? In both cases, can I also use it to
+run the Rust specific functions? All systems were go, so let's publish to PyPI using twine like I normally do. And then
+it happens: the error that I can't upload my wheel because it is compiled specifically for my system. (Like the issue
+described [here](https://stackoverflow.com/questions/59451069/binary-wheel-cant-be-uploaded-on-pypi-using-twine) on 
+StackOverflow).
+
+## Publishing a Python package with Rust code
+So, the main lesson from the problem above: by compiling my Rust code, I can't share it in the same way I can share my
+Python packages. Since "normal" `intervalues` is written in Pure Python, it can be made available in the broadest way
+possible, with the only restriction due to me using some syntax introduced in Python 3.10. But now, in the way I have
+build my Python&Rust combined `intervalues`, it can only be used on a Linux system setup similar to mine, and that is
+not acceptable for PyPI.
+
+So, how to solve this? Like mentioned on the StackOverflow link above, we need to use the `manylinux` project and the
+`auditwheel` tool. 
+
+This project has as goal to make tools available that will make it you can build a Python package with
+compiled code and still make it available across "many linux setups" (hence the name). They do this by offering Docker
+images that have been configured with compiler toolchains from some time ago, making sure that all recent Linux
+distributions support the output of it. They offer multiple versions depending on how far back you want to go.
+
+Next to that, there is the `auditwheel` tool to be used within that Docker image to make sure the wheels that are
+built indeed conform to all requirements needed for uploading to PyPI. To run this, use the following command and adjust
+it to your needs (for example, if you want a different `manylinux` requirement set):
+
+TODO TODO TODO TODO also refer to build-wheels.sh
+
+Note that this will take more time than a normal Python package build, because it will do the build and checks for all
+specified versions of CPython and PyPy. The result is also a set of wheels for each of these, instead of a single one
+for Python in general. These need to all be uploaded to PyPI to make available for installation. 
+
+But then after all this.. it works! I can `pip install` the new version of `intervalues` and make use of the Rust
+functionality in both Python 3.10 and PyPy 3.10. The only downside is that it is now (afaik) Linux specific: this newest
+version (as of writing) can't be installed on Windows whereas the version before can. I can't verify this since I don't
+have a Windows box available right now, but this is what I have been able to gather from what I read about it. To be
+honest, I personally don't really care about that. But if there is an `intervalues` user who wants me to find out if/how
+it can still be used on Windows even with this Rust functionality, let me know (or, of course, submit a PR yourself).
+Alternatively, the old version still works on Windows and there are no real changes from that version to this one
+outside of the Rust wrapper.
+
+## Alternative setups
+There are several alternatives to consider to some of the steps that I have taken, which I might experiment with in the
+future. Experiences from readers are also welcome, especially if these alternatives work really good or really bad.
+
+- Maturin allows you to directly publish the Python package with Rust functionality using `maturin publish` instead of
+`maturin develop`. I have not tried this, so I don't know whether the result is OS-agnostic or if it uses some kind of
+`manylinux` restriction as well, or something else. Also, this feels like it would make most sense if the wrapper was
+included in the base Rust `intervalues` package, since it will introduce another package itself (a Python package that
+the main Python `intervalues` package can include as a dependency). 
+- I want to look into how to make the Rust component optional, and if that makes the core Python functionality still
+usable on Windows.
+  - I could (either by using Maturin as above, or manually) publish the Python side of the Python/Rust layer separately
+  from the rest of the Python code, and make it an optional dependency of the main `intervalues`. 
+  - Perhaps there also other ways of doing this
+- Ideally, I want to have the Rust setup also usable on Windows. Like discussed in the previous section, I will likely
+not look into this myself until a Windows user requests this, especially if I can figure out how to create non-Rust
+future versions as well that are more universally usable.
+- Let me know if you have other suggestions as well for how to best set this up!
+
+Depending on these investigations and/or suggestions, there might be a future entry in this series to discuss them. But
+for now, the next (and potentially final) entry in this series will be on my 
+[overall learnings and experience](../rust-python-04) of using Rust in Python. Alternatively, have a look at some of the
+links down below for further reading.
+
+## Links
+
+- Some of the other Python interval packages:
+  - portion
+  - pyinterval
+- My repo's and packages related to intervals:
+  - Python intervalues: [github]() and [PyPI]()
+  - Rust intervalues: [github]() and [crates.io]()
+  - intervalues_pyrust: [crates.io]()
+  - intfloat: [github]() and [crates.io]()
+- More resources on setuptools-rust:
+  - Bla
+  - Blabla
+  - Blablabla
+- More resources on manylinux and auditwheel:
+  - The why
+  - The how

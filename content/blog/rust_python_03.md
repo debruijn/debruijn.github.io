@@ -1,6 +1,6 @@
 +++
 title = "Rust in Python part 3: publish a Python package"
-date = 2024-10-31
+date = 2024-11-03
 
 [taxonomies]
 tags = ["Blog", "Rust", "Python"]
@@ -195,19 +195,29 @@ possible, with the only restriction due to me using some syntax introduced in Py
 build my Python&Rust combined `intervalues`, it can only be used on a Linux system setup similar to mine, and that is
 not acceptable for PyPI.
 
-So, how to solve this? Like mentioned on the StackOverflow link above, we need to use the `manylinux` project and the
-`auditwheel` tool. 
+So, how to solve this? Like mentioned on the StackOverflow link above, for this we can use the `manylinux` project and 
+the `auditwheel` tool. 
 
 This project has as goal to make tools available that will make it you can build a Python package with
 compiled code and still make it available across "many linux setups" (hence the name). They do this by offering Docker
 images that have been configured with compiler toolchains from some time ago, making sure that all recent Linux
 distributions support the output of it. They offer multiple versions depending on how far back you want to go.
 
-Next to that, there is the `auditwheel` tool to be used within that Docker image to make sure the wheels that are
-built indeed conform to all requirements needed for uploading to PyPI. To run this, use the following command and adjust
-it to your needs (for example, if you want a different `manylinux` requirement set):
+One of the other software in these Docker images is the `auditwheel` tool to be used to make sure the wheels that are
+built indeed conform to all requirements needed for uploading to PyPI. 
 
-TODO TODO TODO TODO also refer to build-wheels.sh
+In order to use this, download the `build-wheels.sh` file on 
+[this link](https://setuptools-rust.readthedocs.io/en/latest/building_wheels.html) and adjust it to your project needs.
+For `intervalues` you can see this in the [repository](https://github.com/debruijn/intervalues). My adjustments are
+to target Python 3.10 and up, together with Pypy 3.10. Next to that, of course, I had to adjust the example project
+name to `intervalues`.
+
+Then, to use this with the Docker image, pull the one you want to use (e.g. 
+`docker pull quay.io/pypa/manylinux2014_x86_64`) and from the project root run the script above using this Docker image
+with the following command: 
+```commandline
+docker run --rm -v `pwd`:/io quay.io/pypa/manylinux2014_x86_64 bash /io/build-wheels.sh
+```
 
 Note that this will take more time than a normal Python package build, because it will do the build and checks for all
 specified versions of CPython and PyPy. The result is also a set of wheels for each of these, instead of a single one
@@ -239,6 +249,8 @@ usable on Windows.
 - Ideally, I want to have the Rust setup also usable on Windows. Like discussed in the previous section, I will likely
 not look into this myself until a Windows user requests this, especially if I can figure out how to create non-Rust
 future versions as well that are more universally usable.
+  - Probably the first candidate to explore for this functionality is to use the `cibuildwheel` as mentioned in the 
+    [setuptools-rust](https://setuptools-rust.readthedocs.io/en/latest/building_wheels.html) docs as well.
 - Let me know if you have other suggestions as well for how to best set this up!
 
 Depending on these investigations and/or suggestions, there might be a future entry in this series to discuss them. But
@@ -257,9 +269,11 @@ links down below for further reading.
   - intervalues_pyrust: [crates.io]()
   - intfloat: [github]() and [crates.io]()
 - More resources on setuptools-rust:
-  - Bla
-  - Blabla
-  - Blablabla
+  - [Overall doc on setuptools-rust](https://setuptools-rust.readthedocs.io/en/latest/README.html)
+  - [If you want to use setup.py instead of pyproject.toml](https://setuptools-rust.readthedocs.io/en/latest/setuppy_tutorial.html)
+  - [Building wheels](https://setuptools-rust.readthedocs.io/en/latest/building_wheels.html)
 - More resources on manylinux and auditwheel:
-  - The why
-  - The how
+  - [The manylinux repository](https://github.com/pypa/manylinux) with details on what the different `manylinux`
+    versions imply for Python and distribution support.
+  - [The auditwheel tool](https://github.com/pypa/auditwheel) showing examples of other commands that can be supplied
+    to it, for example for only checking (not repairing) existing wheels for PyPI compatibility.

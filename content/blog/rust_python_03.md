@@ -176,7 +176,7 @@ least to claim that name.
 ### Add a MANIFEST.in file
 Finally, the shortest addition is a MANIFEST.in file at the project root. This file will make sure the build process
 can find and use the files in the rust folder. It is in my case defined as:
-```text
+```
 include rust/Cargo.toml
 recursive-include rust/ *.rs
 ```
@@ -215,7 +215,7 @@ name to `intervalues`.
 Then, to use this with the Docker image, pull the one you want to use (e.g. 
 `docker pull quay.io/pypa/manylinux2014_x86_64`) and from the project root run the script above using this Docker image
 with the following command: 
-```commandline
+```
 docker run --rm -v `pwd`:/io quay.io/pypa/manylinux2014_x86_64 bash /io/build-wheels.sh
 ```
 
@@ -264,10 +264,10 @@ links down below for further reading.
   - portion
   - pyinterval
 - My repo's and packages related to intervals:
-  - Python intervalues: [github]() and [PyPI]()
-  - Rust intervalues: [github]() and [crates.io]()
-  - intervalues_pyrust: [crates.io]()
-  - intfloat: [github]() and [crates.io]()
+  - Python intervalues: [github](https://github.com/debruijn/intervalues) and [PyPI](https://pypi.org/project/intervalues/)
+  - Rust intervalues: [github](https://github.com/debruijn/intervalues_rust) and [crates.io](https://crates.io/crates/intervalues/)
+  - intervalues_pyrust: [crates.io](https://crates.io/crates/intervalues_pyrust)
+  - intfloat: [github](https://github.com/debruijn/intfloat) and [crates.io](https://crates.io/crates/intfloat/)
 - More resources on setuptools-rust:
   - [Overall doc on setuptools-rust](https://setuptools-rust.readthedocs.io/en/latest/README.html)
   - [If you want to use setup.py instead of pyproject.toml](https://setuptools-rust.readthedocs.io/en/latest/setuppy_tutorial.html)

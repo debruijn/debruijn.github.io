@@ -58,7 +58,7 @@ On this page, we will show an example project in Python, that we will adjust to 
 instead. In this, for instructive purposes, suppose we want to calculate the nth number in the  
 [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_sequence) sequence, defined by the sum of the previous two values
 with 0 and 1 (or 1 and 1) as first two values. We will do this in a stupid way in both Python and Rust, which will help
-to demonstrate the speed gain without being [smart in the first way](../rust-python-00).
+to demonstrate the speed gain without being [smart in the first way](/blog/rust-python-00).
 
 ### Initialize the project
 To start out, first go into the folder in which you put your projects and run `cargo new rust_in_python`. This will 
@@ -240,7 +240,7 @@ Maturin and the adjustments in `Cargo.toml`. Not too much effort for around a 30
 
 At least.. as long as this actually is a realistic representation of what you might achieve in practice. Is it? 
 It can be, but by how much can differ. Let's look at a different example that illustrates a potential limitation in
-[the next part](../rust-python-02), or check out some additional background and reading below first.
+[the next part](/blog/rust-python-02), or check out some additional background and reading below first.
 
 ## Links
 For full code used in this example, have a look at the `rust_in_python` folder in my 

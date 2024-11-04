@@ -255,7 +255,7 @@ future versions as well that are more universally usable.
 
 Depending on these investigations and/or suggestions, there might be a future entry in this series to discuss them. But
 for now, the next (and potentially final) entry in this series will be on my 
-[overall learnings and experience](../rust-python-04) of using Rust in Python. Alternatively, have a look at some of the
+[overall learnings and experience](/blog/rust-python-04) of using Rust in Python. Alternatively, have a look at some of the
 links down below for further reading.
 
 ## Links

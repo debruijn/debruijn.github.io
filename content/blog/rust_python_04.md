@@ -67,7 +67,7 @@ primary implementation or it might the only one. For example, I plan on doing th
 Python primarily, but secondarily in Rust as well, especially for days where I am curious on how that would work or
 how much that would matter.
 - In my other side projects, I will stay on the lookout for functions that are noticably slow to see if I can speed
-them up with Rust. In the case of `intervalues` in [blog post 3](../rust-python-03) I simply really want to try it for
+them up with Rust. In the case of `intervalues` in [blog post 3](/blog/rust-python-03) I simply really want to try it for
 the experience; otherwise I don't know if I would have explored it since I don't know if it is very likely the practical
 use cases of the package would involve such large datasets. But for other future side projects, who knows?
 - In my work as a Data Scientist / Econometrician, Rust does not have a direct use for the key modeling components,

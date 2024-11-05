@@ -88,7 +88,7 @@ url = "blog"
 
 [[extra.menu]]
 name = "Portfolio"
-url = "portfolio"
+url = "portfolio/portfolio"
 
 [[extra.menu]]
 name = "Tags"

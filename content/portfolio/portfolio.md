@@ -1,9 +1,9 @@
 +++
-title = "My portfolio: side-projects and papers"
+title = "Side-projects and papers"
 date = 2024-11-05
 
 [taxonomies]
-tags = ["Portfolio", "Side-projects"]
+tags = ["Portfolio", "Side-projects", "Publications"]
 +++
 
 ## Side projects

@@ -1,5 +1,5 @@
 +++
-title = "My portfolio: side-projects, papers, and more"
+title = "My portfolio: side-projects and papers"
 date = 2024-11-05
 
 [taxonomies]

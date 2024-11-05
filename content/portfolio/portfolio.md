@@ -24,8 +24,8 @@ One of my hobbies is watching competitive Counterstrike. For ranking CS teams, m
 the maker of CS Valve, but also by tournament organizer ESL and by CS news and stats website HLTV. I have started a
 project to combine these, in 3 ways: (1) put them next to each other; (2) create simple aggregate statistics like
 average rank; and (3) producing an "optimal" combined ranking based on these. For this, I had to get access to the
-individual rankings as provided by the above parties, which has lead to the `cs-rankings` project(
-[Github](https://github.com/debruijn/cs_rankings) / [PyPI](https://pypi.org/project/cs-rankings/) ). The project that
+individual rankings as provided by the above parties, which has lead to the `cs-rankings` project 
+([Github](https://github.com/debruijn/cs_rankings) / [PyPI](https://pypi.org/project/cs-rankings/)). The project that
 uses this for the above 3 goals can be found [here](https://github.com/debruijn/cs2) with
 [this](https://github.com/debruijn/cs2/blob/main/combined_cs2_rankings/optimal_score.md) as the main output.
 

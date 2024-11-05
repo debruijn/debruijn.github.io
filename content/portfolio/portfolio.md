@@ -47,3 +47,30 @@ provinces and the 3 BES islands, with support for each individual municipality p
 Some of my other personal projects I use for learning a new skill, maintaining a learned skill, or experimenting with 
 new ideas can be found on my personal Github [here](https://github.com/debruijn). This includes stuff like my Advent of
 Code and Advent of SQL repositories, among others.
+
+<h3>Language stats across these personal repositories</h3>
+
+<a href="https://github.com/debruijn">
+<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=debruijn&layout=compact&theme=buefy&hide_border=false" /></a>
+
+## Research papers and publications
+As a result of my PhD at the Tinbergen Institute and Erasmus University Rotterdam, I have been able to work on the
+following research papers and publications:
+- **Managing Sales Forecasters**, with Philip Hans Franses ([DOI link](10.2139/ssrn.2184281)), _Tinbergen Institute 
+  Discussion Paper Series_, December 2012.
+- **Forecasting Earnings Forecasts**, with Philip Hans Franses ([Repub link](http://hdl.handle.net/1765/41126)), _Tinbergen 
+  Institute Discussion Paper Series_, January 2013.
+- **Analyzing fixed-event forecast revisions**, with Chia-Lin Chang, Philip Hans Franses, and Micheal McAleer
+  ([DOI link](https://doi.org/10.1016/j.ijforecast.2013.04.002)), _International Journal of Forecasting_, October 2013.
+- **Stochastic levels and duration dependence in US unemployment**, with Philip Hans Franses 
+  ([Repub link](http://hdl.handle.net/1765/78710)), _Erasmus University Rotterdam Econometric Institute Report Series_, 
+  September 2015.
+- **Heterogeneous Forecast Adjustment**, with Philip Hans Franses ([DOI link](https://doi.org/10.1002/for.2433)), _Journal
+  of Forecasting_, July 2016.
+- **Benchmarking judgmentally adjusted forecasts**, with Philip Hans Franses 
+  ([DOI link](https://doi.org/10.1002/ijfe.1569)), _International Journal of Finance and Economics_, October 2016.
+- **A novel approach to measuring consumer confidence**, with Rene Segers and Philip Hans Franses
+  ([DOI link](https://doi.org/10.1016/j.ecosta.2016.11.009)), _Econometrics and Statistics_, September 2017.
+
+More details can be found by following the mentioned DOI or Repub links. Most of my research back then was done using 
+Matlab, EViews, Python, and/or LaTeX.

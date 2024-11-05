@@ -87,6 +87,10 @@ name = "Blog"
 url = "blog"
 
 [[extra.menu]]
+name = "Portfolio"
+url = "portfolio"
+
+[[extra.menu]]
 name = "Tags"
 url = "tags"
 

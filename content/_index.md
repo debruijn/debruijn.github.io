@@ -11,7 +11,7 @@ lang = 'en'
 
 My name is Bert and I am a data scientist and econometrician from the Netherlands 🇳🇱 currently living on Bonaire 🇧🇶 in the
 Caribbean Netherlands. On this website you can find my [blog](posts) and [portfolio](portfolio), and what else I 
-want to put here in the future.
+want to put here in the future. More info on me can be found on the [about](about) page.
 
 ## Requests and reactions
 

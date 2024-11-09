@@ -1,10 +1,20 @@
 +++
-title = "About"
-template = "about/section.html"
+title = "About me"
+description = "A about page of ..."
+template = "prose.html"
+insert_anchor_links = "none"
+
+[extra]
+lang = 'en'
+math = false
+mermaid = false
+copy = false
+comment = false
+reaction = false
 +++
 
 This is my website, built using [Zola](https://www.getzola.org/) using the 
-[Tale-Zola](https://github.com/aaranxu/tale-zola) theme.
+[serene](https://github.com/isunjn/serene) theme.
 
 The goal of this website is to have a location for interesting experiments and thoughts that I want to share with the
 world, as well as a place to present my portfolio. In the future I might also have other ideas, who knows?

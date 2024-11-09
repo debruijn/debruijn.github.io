@@ -1,12 +1,29 @@
 +++
 title = "Rust in Python: summary of learnings so far"
 date = 2024-11-04
+draft = false
 
 [taxonomies]
-tags = ["Blog", "Rust", "Python"]
+categories = ["blog"]
+tags = ["rust", "python"]
+
+[extra]
+lang = "en"
+toc = true
+comment = true
+copy = true
+math = false
+mermaid = false
+outdate_alert = true
+outdate_alert_days = 120
+display_tags = true
+truncate_summary = false
+featured = false
+reaction = false
 +++
 
-In the [past](../rust-python-01) [few](../rust-python-02) [entries](../rust-python-03) in this blog series, I have 
+
+In the [past](/posts/rust-python-01) [few](/posts/rust-python-02) [entries](/posts/rust-python-03) in this blog series, I have 
 presented my approach to incorporate Rust in Python projects. So, what are my current views about learning Rust simply 
 to speed up some critical functions? Would I do it again if I had to start from scratch now? And where do I see the 
 practical use for it in day to day work?
@@ -67,7 +84,7 @@ primary implementation or it might the only one. For example, I plan on doing th
 Python primarily, but secondarily in Rust as well, especially for days where I am curious on how that would work or
 how much that would matter.
 - In my other side projects, I will stay on the lookout for functions that are noticably slow to see if I can speed
-them up with Rust. In the case of `intervalues` in [blog post 3](/blog/rust-python-03) I simply really want to try it for
+them up with Rust. In the case of `intervalues` in [blog post 3](/posts/rust-python-03) I simply really want to try it for
 the experience; otherwise I don't know if I would have explored it since I don't know if it is very likely the practical
 use cases of the package would involve such large datasets. But for other future side projects, who knows?
 - In my work as a Data Scientist / Econometrician, Rust does not have a direct use for the key modeling components,

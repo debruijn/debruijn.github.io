@@ -1,9 +1,25 @@
 +++
 title = "Rust in Python part 1: getting started"
 date = 2024-10-23
+draft = false
 
 [taxonomies]
-tags = ["Blog", "Rust", "Python"]
+categories = ["blog"]
+tags = ["rust", "python"]
+
+[extra]
+lang = "en"
+toc = true
+comment = true
+copy = true
+math = false
+mermaid = false
+outdate_alert = true
+outdate_alert_days = 120
+display_tags = true
+truncate_summary = false
+featured = false
+reaction = false
 +++
 
 On this page, I will talk you through how to get started with using Rust in Python. For this, I will assume you know the
@@ -240,7 +256,7 @@ Maturin and the adjustments in `Cargo.toml`. Not too much effort for around a 30
 
 At least.. as long as this actually is a realistic representation of what you might achieve in practice. Is it? 
 It can be, but by how much can differ. Let's look at a different example that illustrates a potential limitation in
-[the next part](/blog/rust-python-02), or check out some additional background and reading below first.
+[the next part](/posts/rust-python-02), or check out some additional background and reading below first.
 
 ## Links
 For full code used in this example, have a look at the `rust_in_python` folder in my 

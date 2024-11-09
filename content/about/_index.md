@@ -1,6 +1,6 @@
 +++
 title = "About me"
-description = "A about page of ..."
+description = "About me"
 template = "prose.html"
 insert_anchor_links = "none"
 
@@ -12,21 +12,23 @@ copy = false
 comment = false
 reaction = false
 +++
-
-This is my website, built using [Zola](https://www.getzola.org/) using the 
+My name is Bert and I am a data scientist and econometrician from the Netherlands 🇳🇱 currently living on Bonaire 🇧🇶 in the
+Caribbean Netherlands. This is my website, built using [Zola](https://www.getzola.org/) using the 
 [serene](https://github.com/isunjn/serene) theme.
 
-The goal of this website is to have a location for interesting experiments and thoughts that I want to share with the
-world, as well as a place to present my portfolio. In the future I might also have other ideas, who knows?
-
-## Requests and reactions
-
-If you have a request for a topic, such as a follow-up to an existing one, feel free to open an issue on this websites'
-[Github](https://github.com/debruijn/personal_website). For now, you can leave comments there as well. I might include
-a commenting system on the website itself in the future but that is not part of my current plans.
-
-If you have other ways of reaching me, you can use those as well of course... 
-
-## And one more thing..
-
-Thanks for being here! Have a great day!
+Some facts about me:
+- 🧑🏻‍🎓 I have a PhD in Econometrics with a specialization in forecasting
+- 🔉 After that, I have spent the majority of my career in media data world, modeling causal relationships between
+marketing campaigns and various types of KPIs
+- 🤔 I’m looking for help with finding a new remote job that can be done from Bonaire 😉
+- 👯 I’m looking to collaborate on anything that interests me - feel free to reach out!
+- 🔭 I’m currently working on projects called intervalues, cs-rankings and nl_maps (see my Github)
+- 🌱 I’m currently learning various new programming languages
+  - If you want to know why, have a look at the [introduction](/posts/rust-python-00) page of my Rust-in-Python series.
+- ⚡ Fun fact: I am also learning Spanish - ¡Lo hablo un poco pero quiero aprender más!
+- 💬 Ask me to help you with topics like:
+  -   📈 (Bayesian) statistics, Econometrics, Forecasting, Modeling decisions, MCMC Samplers
+  -   🖥️ Python, Rust, Docker, Automation, Git, Linux, Rust
+  -   📺 Media data, Advertisement impact measurement and Marketing effect estimation
+- 📫 How to reach me: [Github](https://github.com/debruijn), [Gitlab](http://gitlab.com/bert.debruijn), 
+  [LinkedIn](https://www.linkedin.com/in/lpdebruijn)

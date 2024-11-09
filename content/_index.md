@@ -10,18 +10,19 @@ lang = 'en'
 # Welcome, welkom, bon bini, bienvenido 👋
 
 My name is Bert and I am a data scientist and econometrician from the Netherlands 🇳🇱 currently living on Bonaire 🇧🇶 in the
-Caribbean Netherlands. On this website you can find my [blog](posts) and [portfolio](portfolio). 
+Caribbean Netherlands. On this website you can find my [blog](posts) and [portfolio](portfolio), and what else I 
+want to put here in the future.
 
-Some facts about me:
-- 🔭 I’m currently working on projects called intervalues, cs-rankings and nl_maps (see my Github)
-- 🌱 I’m currently learning Rust, especially for speeding up key functions in Python
-  - If you want to know why, have a look at the [introduction](/posts/rust-python-00) page of my Rust-in-Python series.
-- ⚡ Fun fact: I am also learning Spanish - ¡Lo hablo un poco pero quiero aprender más!
-- 👯 I’m looking to collaborate on anything that interests me - feel free to reach out!
-- 🤔 I’m looking for help with finding a new remote job that can be done from Bonaire 😉
-- 💬 Ask me to help you with topics like:
-  -   📈 (Bayesian) statistics, Econometrics, Forecasting, Modeling decisions, MCMC Samplers
-  -   🖥️ Python, Docker, Automation, Git, Linux, Rust
-  -   📺 Media data, Advertisement impact measurement and Marketing effect optimization
-- 📫 How to reach me: [Github](https://github.com/debruijn), [Gitlab](http://gitlab.com/bert.debruijn), 
-  [LinkedIn](https://www.linkedin.com/in/lpdebruijn)
+## Requests and reactions
+
+If you have a request for a topic, such as a follow-up to an existing one, feel free to open an issue on this websites'
+[Github](https://github.com/debruijn/personal_website). For now, you can leave comments there as well. I might include
+a commenting system on the website itself in the future but that is not part of my current plans.
+
+If you have other ways of reaching me, you can use those as well of course. :)
+
+## Technical details
+
+This website has been built using [Zola](https://www.getzola.org/) using the 
+[serene](https://github.com/isunjn/serene) theme. Have a look at technical details 
+[here](https://github.com/debruijn/debruijn.github.io).

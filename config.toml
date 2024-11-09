@@ -5,7 +5,7 @@
 #
 #=========================================================================================
 
-base_url = "https://debruijn.github.io/personal_website"  # TODO: get a better url at some point
+base_url = "https://debruijn.github.io/personal_website/"  # TODO: get a better url at some point
 title = "Machine doing. Human learning"
 description = "The personal website of Bert de Bruijn, including a blog and more."
 default_language = "en"

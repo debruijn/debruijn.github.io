@@ -51,7 +51,7 @@ Code and Advent of SQL repositories, among others.
 <h3>Language stats across these personal repositories</h3>
 
 <a href="https://github.com/debruijn">
-<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=debruijn&layout=compact&theme=buefy&hide_border=false" /></a>
+<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=debruijn&layout=compact&theme=transparent&hide_border=false&&langs_count=10" /></a>
 
 ## Research papers and publications
 As a result of my PhD at the Tinbergen Institute and Erasmus University Rotterdam, I have been able to work on the

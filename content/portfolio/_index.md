@@ -1,9 +1,16 @@
 +++
 title = "Side-projects and papers"
-date = 2024-11-05
+description = "Side-projects and papers"
+template = "prose.html"
+insert_anchor_links = "none"
 
-[taxonomies]
-tags = ["Portfolio", "Side-projects", "Publications"]
+[extra]
+lang = 'en'
+math = false
+mermaid = false
+copy = false
+comment = false
+reaction = false
 +++
 
 ## Side projects
@@ -52,6 +59,8 @@ Code and Advent of SQL repositories, among others.
 
 <a href="https://github.com/debruijn">
 <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=debruijn&layout=compact&theme=transparent&hide_border=false&&langs_count=10" /></a>
+
+
 
 ## Research papers and publications
 As a result of my PhD at the Tinbergen Institute and Erasmus University Rotterdam, I have been able to work on the

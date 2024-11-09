@@ -1,9 +1,25 @@
 +++
 title = "Rust in Python part 0: why and how?"
 date = 2024-10-18
+draft = false
 
 [taxonomies]
-tags = ["Blog", "Rust", "Python"]
+categories = ["blog"]
+tags = ["rust", "python"]
+
+[extra]
+lang = "en"
+toc = true
+comment = true
+copy = true
+math = false
+mermaid = false
+outdate_alert = true
+outdate_alert_days = 120
+display_tags = true
+truncate_summary = false
+featured = true
+reaction = false
 +++
 
 When coding in Python, you will occasionally be in a situation where a single function or a few functions are
@@ -79,4 +95,4 @@ You can use them together with existing documentation (which can be a bit scatte
 Of course, you can use this series as a starting point of learning more Rust (which is also what I did!). Or as a
 starting point for learning other languages and integrate them in Python (which is also what I have planned!). But you
 have to start somewhere, and it's nice to get to some tangible gain that you can incorporate into an existing codebase
-or workflow. So for that first step, go to the [first page](../rust-python-01) of this series.
+or workflow. So for that first step, go to the [first page](/posts/rust-python-01) of this series.

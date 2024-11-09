@@ -1,9 +1,25 @@
 +++
 title = "Rust in Python part 2: more detailed example"
 date = 2024-10-30
+draft = false
 
 [taxonomies]
-tags = ["Blog", "Rust", "Python"]
+categories = ["blog"]
+tags = ["rust", "python"]
+
+[extra]
+lang = "en"
+toc = true
+comment = true
+copy = true
+math = false
+mermaid = false
+outdate_alert = true
+outdate_alert_days = 120
+display_tags = true
+truncate_summary = false
+featured = false
+reaction = false
 +++
 
 After the instructions on setting up Maturin for the "simple" Fibonacci example, you might have questions how well this
@@ -176,7 +192,7 @@ Note that for the Fibonacci example in the previous page the compiler flag does 
 Rust-in-Python version: in that particular case, the code is already so straightforward that the level-0 compilation
 is already optimal. This shows that the complexity of the code can be a factor in how much the compiler can gain by
 this extra level of optimization. So how does that show itself when looking at the performance of an actual Python
-package? Let's have a look at the [next entry](/blog/rust-python-03) in this series, or have a look at some of the links 
+package? Let's have a look at the [next entry](/posts/rust-python-03) in this series, or have a look at some of the links 
 below for further background reading.
 
 ### Links

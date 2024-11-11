@@ -29,6 +29,8 @@ Goal: set of metrics that can be applied to any speedrunning event
 ## Dominance metric
 Three variants:
 - Comparable across games across time: percentage in lead
+  - Per player: how dominant is this player?
+  - For the game: weighted average by time in lead (which is sum of squares) -> 1 is full dominance
 - Comparable within game across time: distance to next best
     - Transform max to min or reverse
     - Need metric that:

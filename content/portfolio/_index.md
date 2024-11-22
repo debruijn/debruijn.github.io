@@ -65,7 +65,7 @@ Code and Advent of SQL repositories, among others.
 ## Research papers and publications
 As a result of my PhD at the Tinbergen Institute and Erasmus University Rotterdam, I have been able to work on the
 following research papers and publications:
-- **Managing Sales Forecasters**, with Philip Hans Franses ([DOI link](10.2139/ssrn.2184281)), _Tinbergen Institute 
+- **Managing Sales Forecasters**, with Philip Hans Franses ([DOI link](https://dx.doi.org/10.2139/ssrn.2184281)), _Tinbergen Institute 
   Discussion Paper Series_, December 2012.
 - **Forecasting Earnings Forecasts**, with Philip Hans Franses ([Repub link](http://hdl.handle.net/1765/41126)), _Tinbergen 
   Institute Discussion Paper Series_, January 2013.

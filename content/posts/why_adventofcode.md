@@ -53,7 +53,10 @@ have to still recognize it yourself)
   - Especially when the ruleset is such that the grid size can grow, keeping track of only relevant elements can be faster
   - Alternatively, if there are a fixed number of elements for which you have to track the location, you can just have a
   list of locations (or dict, if mapping is needed).
+- Don't use AI. At least not until you have the answer (to get suggestions on alternative approaches or cleanup). It is
+  much more useful to struggle with a challenge yourself, and if needed, come back to it later. Of course, it is your
+  call what you want to get out of it.
 
-Warning if you intend to publish solutions on Github or elsewhere: don't include your input data!
+Warning if you intend to publish solutions on GitHub or elsewhere: don't include your input data!
 
 Note: Advent of SQL will also start, and you can do Everybody Codes or old AoC years!

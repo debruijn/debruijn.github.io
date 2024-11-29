@@ -24,15 +24,16 @@ reaction = false
 
 When coding in Python, you will occasionally be in a situation where a single function or a few functions are
 responsible for the majority of your execution time. In most cases, that is fine: if for a particular task, 95% of your
-time is spent in a single function but the total run time is 1 second, and this particular task is not ran frequently,
-then there is no reason to worry about speed improvements.
+time is spent in a single function but the total run time is less than a second, and this particular task is not ran 
+frequently, then there is no reason to worry about speed improvements.
 
 But of course, the opposite will happen as well: this 1 second task needs to be ran 1000 or 1000000 times each time
 you do a particular broader task (say, a model run in your data science research; or a ingestion of data in your 
-pipeline; or every time a page loads on your website). If this becomes too critical to ignore, there are two things you
+pipeline; or every time a page loads on your website). Bringing down this 1 second to a tenth of second will be worth it
+in aggregate. If for this or another reason you want to speed it up, there are roughly two categories of things you
 can do:
-- Be smart
-- Be smart, but differently
+- Be smart in a classical way
+- Be smart in a different way
 
 One way of being smart is looking at your process, and figure out if there are ways to avoid some of these calculations:
 - Are you recalculating a variable in a loop that could be precalculated once?
@@ -44,25 +45,27 @@ time?
 
 This way of being smart requires you to think, which sometimes you don't want to do. You might also have to convince
 other people that this is actually worth it. And: there is no guarantee that refactoring in such a way will lead to a
-speed improvement.
+speed improvement: sometimes an alternative approach turns out to be slower.
 
 So, what is that other way of being smart? Of course, given the title of this series of blog posts, the answer involves
 implementing your Python functionality in Rust, and using that in Python. Ideally, from a Python user perspective, they
-wouldn't even know they use Rust under the hood. The next pages in this series will show my experience in learning how
-to do that (without knowing Rust beforehand!) and also the limitations to this approach.
+wouldn't even know they use Rust under the hood. In fact, an alternative way to spell this other way of being smart 
+would be l-a-z-y: instead of thinking if a better algorithm exists and what that would be, you just reimplement the 
+current one. The next pages in this series will show my experience in learning how to do that (without knowing Rust
+beforehand!) and also the limitations to this approach.
 
 A few remarks to discuss beforehand, to get some of the caveats out of the way..
 
 ### Why is Rust faster than Python?
 The main relevant difference between Rust and Python in this regard is that Rust is a compiled and statically-typed 
-language and Python is not. This makes it that some of the complexities in what needs to happen are presolved by the 
-Rust syntax and compiler, while the Python interpreter has to do that live while running the code. Think of adding two 
-integers x and y together. In the case of Rust, the compiler will have made sure that the exact procedure that has to be
-followed has been defined, so when you run your code, it can just do that procedure. In the case of Python, a lot of 
-questions (might*) have to be answered: are both x and y really numbers, and are they really integers? What do we do in
-case the answer is no? Should we already take the possibility that the answer is no into account beforehand? This 
-results in more decision points needing to be figured out at every step, and decision points slow every process down
-(not just in code).
+language and Python is not. This makes it that some of the complexities in what needs to happen can be solved or 
+optimized by the Rust syntax and compiler during writing or compiling your code, while the Python interpreter has to do
+that live while running the code. Think of adding two integers x and y together. In the case of Rust, the compiler will
+have made sure that the exact procedure that has to be followed has been defined, so when you run your code, it can just
+do that procedure. In the case of Python, a lot of questions (might*) have to be answered: are both x and y really 
+numbers, and are they really integers? What do we do in case the answer is no? This results in more decision points 
+needing to be figured out at every step, and decision points slow every process down (this is also true for processes
+outside programming).
 
 ### Does this only hold for Rust?
 No, there are many other choices you could make instead of Rust as well. An obvious one is C, which is the language used
@@ -71,16 +74,17 @@ advantages and disadvantages of Rust over C. The main disadvantage of Rust is th
 there are more resources out there than for Rust: more example code, more IDE integration, and also more fellow 
 programmers that can help you out. 
 
-The main advantage (although it depends who you ask) is that Rust is annoying. And annoying is good if you are new to
+The main advantage (although it depends on who you ask) is that Rust is annoying. And annoying is good if you are new to
 statically-typed languages. There are also moments where the harsh rules of Rust could slow you down compared to using
 something like C, but these are less likely if you are just aiming to replace a single core Python function with a piece
-of external code in Rust or C. Instead, you are likely to often forget about the details of this lower-level language,
-and then it helps you that someone will remind you of what you are doing wrong. 
+of external code in Rust or C. Instead, if you aim to use such a language only for these critical speed-up situations,
+you are likely to have forgotten about the details of this lower-level language, and then it helps you that Rust and its
+compiler will remind you of everything that you are doing wrong. 
 
-In a different use case, your choice of language might be different, but my experience was that I was able to within
-half a day was able (from scratch!) to learn some basic Rust, and learn how to call Rust form Python to speed-up a 
-pre-existing function to less than 10% of its run time, and that the Rust compiler (and me shutting down their 
-complaints) made me more confident that this solution actually works for a variety of input values.
+In a different use case, your choice of language might be different, but my experience was that within half a day I was 
+able to learn some basic Rust, and learn how to call Rust from Python to speed-up a pre-existing function to less than
+10% of its run time. Even more, because of the Rust compiler (and me shutting down its complaints) I was already quite
+confident that this solution actually works for a variety of input values and not just the ones that I tried.
 
 ### What is coming up?
 This page tries to answer the "Why Rust?" question. What follows will be answers to the "How to Rust" question:

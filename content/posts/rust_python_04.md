@@ -28,7 +28,7 @@ presented my approach to incorporate Rust in Python projects. So, what are my cu
 to speed up some critical functions? Would I do it again if I had to start from scratch now? And where do I see the 
 practical use for it in day to day work?
 
-### Not a big effort as you might think
+### Not as big of an effort as you might think
 Learning Rust to a point where it is enough to do this at all does not take a lot of time. Of course, you can learn
 way more Rust, but the gains can already be achieved quite quickly. The key help in that is the Rust compiler, being
 nitpicky (in a good way) to limit the issues you might have when you just want it to work reliably.

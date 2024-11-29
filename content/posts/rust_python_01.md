@@ -22,10 +22,10 @@ featured = false
 reaction = false
 +++
 
-On this page, I will talk you through how to get started with using Rust in Python. For this, I will assume you know the
-basics of Python (defining a function, importing a package, etc). To add on that, this page will present:
+On this page, I will talk you through how to get started with using Rust in Python. For this, I will assume you know 
+some basic components of Python (defining a function, importing a package, etc). To add on that, this page will present:
 - Rust, & how to get started with that up to a sufficient level for the goal of a single Python function call
-- An example Python project to instead run via Rust
+- An example Python project
 - The same functionality written in Rust
 - How to compile and expose Rust code for use in Python
 - How to adjust Python code to use this Rust code

@@ -188,12 +188,12 @@ In this particular case, there is almost no gain in the pure Rust implementation
 a very significant increase bringing it much closer to the pure Rust version. Apparently, in the Maturin or Py03 wrapper
 there is some code that the compiler can optimize well.
 
-Note that for the Fibonacci example in the previous page the compiler flag does not matter at all, even for the 
-Rust-in-Python version: in that particular case, the code is already so straightforward that the level-0 compilation
-is already optimal. This shows that the complexity of the code can be a factor in how much the compiler can gain by
-this extra level of optimization. So how does that show itself when looking at the performance of an actual Python
-package? Let's have a look at the [next entry](/posts/rust-python-03) in this series, or have a look at some of the links 
-below for further background reading.
+Note that for the Fibonacci example I did not touch this compiler flag. This is because in that case it does not matter 
+at all, even for the Rust-in-Python version: in that particular case, the code is already so straightforward that the 
+level-0 compilation is (close to) optimal. This shows that the complexity of the code can be a factor in how much the 
+compiler can gain by these extra levels of optimization. So how does that show itself when looking at the performance 
+of an actual Python package? Let's have a look at the [next entry](/posts/rust-python-03) in this series, or have a 
+look at some of the links below for further background reading.
 
 ### Links
 - The [Advent of Code](www.adventofcode.com) website

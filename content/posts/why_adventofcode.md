@@ -23,7 +23,7 @@ reaction = false
 +++
 
 [Advent of Code](http://www.adventofcode.com) is coming up again, starting December 1st. It is a yearly event with programming
-challenges every day up until Christmas, and I have participated in it for last few years and will do so again this
+challenges every day up until Christmas, and I have participated in it for the last few years and will do so again this
 year. In case you are on the fence, let me give you some reasons on why it can be worthwhile to participate, for all
 kinds of level of programming.
 
@@ -44,12 +44,6 @@ one, or do them out of order. Each challenge consists of two parts: if you compl
 to the second part. Sometimes the second part is a totally different problem to solve than the first part, but in most
 cases it will be a more difficult version: bigger data set, more iterations, more rules, higher dimension, or whatever
 is applicable to the challenge of that day.
-
-Also note that it is not just about programming, but also about generic problem-solving: what kind of assumptions can
-you make? What kind of properties should the solution have, and how can you get there? Is there any hint in your data
-input on what corner cases to take into account? In a sense, programming is always at least a bit about problem solving
-(how do I get the desired output from this input?) but this particular property might not be what you expect if you
-just think about programming challenges.
 
 You can participate by joining up with an existing GitHub, Google, Twitter or Reddit account. Each challenge will have
 an input that is specific to you, which you can manually download from the website (or automatically using a tool like
@@ -163,7 +157,7 @@ after 5 days already.
 ### Some tips if you are new to it
 - In most cases it is ideal to figure out a solution that would work for any input, so don't (permanently) hard code in
 some specific numbers or properties of your input. But sometimes, looking at patterns in the data is part of the 
-challenge, so if you can't figure out a general solution, then it might be such a day where you actually have to 
+challenge, so if you can't figure out a general solution, then it might be such a day for which you actually have to 
 construct a data-specific solution.
 - Speaking of input data: if you want to make use of Git repositories for managing your code, then don't include the
 input files within them if you make the repositories public. Eric (the creator of Advent of Code) has requested to keep 
